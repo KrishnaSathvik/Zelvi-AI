@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /auth
+Disallow: /app/
+
+Sitemap: https://zelvi.pp/sitemap.xml
+

@@ -1,0 +1,382 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEO//RAW</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+/* Theme Variables */
+--bg-page: #f2f2f2;
+--bg-card: #ffffff;
+--text-main: #0a0a0a;
+--text-muted: #525252;
+--border-main: #000000;
+--cursor-size: 20px;
+}
+/* Dark Mode Overrides */
+body.dark-mode {
+--bg-page: #0f0f0f;
+--bg-card: #171717;
+--text-main: #ededed;
+--text-muted: #a3a3a3;
+--border-main: #ffffff;
+}
+body {
+font-family: 'Space Grotesk', sans-serif;
+background-color: var(--bg-page);
+color: var(--text-main);
+cursor: crosshair;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Utility classes to use CSS vars with Tailwind logic */
+.theme-border { border-color: var(--border-main); }
+.theme-bg-page { background-color: var(--bg-page); }
+.theme-bg-card { background-color: var(--bg-card); }
+.theme-text-main { color: var(--text-main); }
+.font-mono {
+font-family: 'JetBrains Mono', monospace;
+}
+/* Custom scrollbar for brutalist feel */
+::-webkit-scrollbar {
+width: 12px;
+}
+::-webkit-scrollbar-track {
+background: var(--bg-page);
+border-left: 2px solid var(--border-main);
+}
+::-webkit-scrollbar-thumb {
+background: var(--text-main);
+border: 2px solid var(--bg-page);
+}
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+/* Marquee Animation */
+@keyframes marquee {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+animation: marquee 20s linear infinite;
+}
+/* Hard shadow utility */
+.shadow-hard {
+box-shadow: 4px 4px 0px 0px var(--border-main);
+}
+.shadow-hard-hover:hover {
+box-shadow: 6px 6px 0px 0px var(--border-main);
+transform: translate(-2px, -2px);
+}
+.shadow-hard-active:active {
+box-shadow: 0px 0px 0px 0px var(--border-main);
+transform: translate(4px, 4px);
+}
+/* Grain overlay */
+.grain {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+pointer-events: none;
+z-index: 50;
+opacity: 0.05;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+}
+/* Interactive elements transition */
+.transition-theme {
+transition: all 0.3s ease;
+}
+</style></head>
+<body class="antialiased overflow-x-hidden selection:bg-lime-400 selection:text-black">
+
+    <div class="grain"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-40 theme-bg-page border-b-2 theme-border transition-theme">
+        <div class="flex justify-between items-stretch h-16">
+            <a href="#" class="flex items-center px-6 border-r-2 theme-border bg-lime-400 hover:bg-lime-300 transition-colors group text-black">
+                <span class="iconify text-2xl group-hover:rotate-90 transition-transform duration-300" data-icon="lucide:box" data-stroke-width="1.5"></span>
+                <span class="ml-3 font-mono text-sm tracking-tight font-semibold">NEO//RAW</span>
+            </a>
+            
+            <div class="hidden md:flex flex-1 items-center justify-end">
+                <a href="#" class="h-full flex items-center px-8 border-l-2 theme-border font-mono text-xs uppercase hover:bg-[var(--text-main)] hover:text-[var(--bg-page)] transition-colors">Manifesto</a>
+                <a href="#" class="h-full flex items-center px-8 border-l-2 theme-border font-mono text-xs uppercase hover:bg-[var(--text-main)] hover:text-[var(--bg-page)] transition-colors">Grid</a>
+                <a href="#" class="h-full flex items-center px-8 border-l-2 theme-border font-mono text-xs uppercase hover:bg-[var(--text-main)] hover:text-[var(--bg-page)] transition-colors">Components</a>
+            </div>
+
+            <button class="flex md:hidden items-center px-6 border-l-2 theme-border hover:bg-[var(--text-main)] hover:text-[var(--bg-page)]">
+                <span class="iconify text-xl" data-icon="lucide:menu" data-stroke-width="1.5"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-16 md:pt-48 md:pb-32 px-4 md:px-12 border-b-2 theme-border theme-bg-page transition-theme">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="inline-block w-3 h-3 bg-lime-400 border theme-border shadow-[2px_2px_0_0_rgba(0,0,0,1)] dark:shadow-[2px_2px_0_0_rgba(255,255,255,1)]"></span>
+                    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">System v2.0.4</span>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter leading-[0.85] uppercase">
+                    Function <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-lime-300 decoration-clone" style="-webkit-text-stroke: 2px var(--border-main);">Over</span> <br>
+                    Form.
+                </h1>
+
+                <div class="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                    <p class="max-w-md font-mono text-sm leading-relaxed border-l-2 theme-border pl-4">
+                        We reject the soft shadows and rounded corners of the modern web. We embrace the grid, the border, and the raw pixel.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="group relative px-8 py-4 bg-[var(--text-main)] text-[var(--bg-page)] font-mono text-sm uppercase border-2 theme-border shadow-hard transition-all shadow-hard-hover shadow-hard-active">
+                            <span class="relative z-10 flex items-center gap-2">
+                                Start Building
+                                <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-stroke-width="1.5"></span>
+                            </span>
+                        </button>
+                        <button class="group px-8 py-4 bg-transparent text-[var(--text-main)] font-mono text-sm uppercase border-2 theme-border hover:bg-lime-400 hover:text-black hover:border-black transition-colors">
+                            Documentation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decoration Elements -->
+        <div class="absolute top-32 right-12 hidden lg:block">
+            <span class="iconify text-9xl opacity-5 rotate-12" data-icon="lucide:cpu" data-stroke-width="1.5"></span>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="w-full border-b-2 theme-border overflow-hidden bg-lime-400 py-3 text-black">
+        <div class="whitespace-nowrap animate-marquee flex gap-8">
+            <span class="text-xl font-bold uppercase tracking-tight flex items-center gap-8">
+                Raw Aesthetics <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                High Contrast <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                Grid Systems <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                No Compromise <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                Raw Aesthetics <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                High Contrast <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                Grid Systems <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                No Compromise <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+            </span>
+            <span class="text-xl font-bold uppercase tracking-tight flex items-center gap-8">
+                Raw Aesthetics <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                High Contrast <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                Grid Systems <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                No Compromise <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                Raw Aesthetics <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                High Contrast <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                Grid Systems <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+                No Compromise <span class="iconify" data-icon="lucide:star" data-stroke-width="1.5"></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Bento Grid Section -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-b-2 theme-border transition-theme">
+        
+        <!-- Card 1 -->
+        <div class="group relative border-b-2 md:border-b-0 md:border-r-2 theme-border p-8 md:p-12 hover:bg-[var(--bg-card)] transition-colors">
+            <div class="absolute top-4 right-4 font-mono text-xs border theme-border px-1 rounded-none bg-lime-400 text-black">01</div>
+            <div class="mb-8">
+                <span class="iconify text-4xl mb-4" data-icon="lucide:layout-grid" data-stroke-width="1.5"></span>
+                <h3 class="text-2xl font-semibold tracking-tight mb-2">Rigid Structure</h3>
+                <p class="font-mono text-xs text-neutral-500 leading-relaxed">
+                    Pixels are square. Layouts should be too. Embrace the constraints of the viewport.
+                </p>
+            </div>
+            <div class="w-full h-24 border-2 theme-border theme-bg-page group-hover:shadow-hard transition-all relative overflow-hidden">
+                <div class="absolute inset-0 grid grid-cols-4 gap-0 divide-x-2 divide-[var(--border-main)]">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group relative border-b-2 md:border-b-0 lg:border-r-2 theme-border p-8 md:p-12 hover:bg-[var(--bg-card)] transition-colors">
+            <div class="absolute top-4 right-4 font-mono text-xs border theme-border px-1 rounded-none text-[var(--text-main)]">02</div>
+            <div class="mb-8">
+                <span class="iconify text-4xl mb-4" data-icon="lucide:type" data-stroke-width="1.5"></span>
+                <h3 class="text-2xl font-semibold tracking-tight mb-2">Typography</h3>
+                <p class="font-mono text-xs text-neutral-500 leading-relaxed">
+                    Scale is the only tool you need. Make it big, make it readable, make it loud.
+                </p>
+            </div>
+            <div class="flex items-baseline gap-1">
+                <span class="text-6xl font-bold leading-none">Aa</span>
+                <span class="font-mono text-xs">JetBrains Mono</span>
+            </div>
+        </div>
+
+        <!-- Card 3 (Interactive Form) -->
+        <div class="group relative p-8 md:p-12 bg-black text-white dark:bg-neutral-800">
+            <div class="absolute top-4 right-4 font-mono text-xs border border-white px-1 rounded-none">03</div>
+            <h3 class="text-2xl font-semibold tracking-tight mb-6">Interact</h3>
+            
+            <form class="space-y-6" onsubmit="event.preventDefault();">
+                <!-- Custom Input -->
+                <div class="space-y-2">
+                    <label class="font-mono text-xs uppercase text-neutral-400">Email Address</label>
+                    <input type="email" placeholder="user@local.host" class="w-full bg-transparent border-b-2 border-neutral-600 py-2 text-sm font-mono focus:outline-none focus:border-lime-400 placeholder-neutral-700 text-white transition-colors">
+                </div>
+
+                <!-- Custom Checkbox -->
+                <label class="flex items-center gap-3 cursor-pointer group/check">
+                    <div class="relative w-5 h-5 border-2 border-white flex items-center justify-center transition-colors group-hover/check:border-lime-400">
+                        <input type="checkbox" class="peer appearance-none w-full h-full absolute inset-0 cursor-pointer">
+                        <span class="iconify text-lime-400 opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="lucide:check" data-stroke-width="2"></span>
+                    </div>
+                    <span class="font-mono text-xs uppercase select-none group-hover/check:text-lime-400">Confirm Protocol</span>
+                </label>
+
+                <!-- Custom Range Slider -->
+                <div class="space-y-2 pt-2">
+                    <div class="flex justify-between font-mono text-xs text-neutral-400">
+                        <span>INTENSITY</span>
+                        <span>100%</span>
+                    </div>
+                    <input type="range" class="w-full h-2 bg-neutral-800 appearance-none cursor-pointer [&amp;::-webkit-slider-thumb]:appearance-none [&amp;::-webkit-slider-thumb]:w-4 [&amp;::-webkit-slider-thumb]:h-4 [&amp;::-webkit-slider-thumb]:bg-lime-400 [&amp;::-webkit-slider-thumb]:border-2 [&amp;::-webkit-slider-thumb]:border-white">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Content Split -->
+    <section class="flex flex-col lg:flex-row border-b-2 theme-border min-h-[500px] transition-theme">
+        <!-- Image/Visual Side -->
+        <div class="w-full lg:w-1/2 bg-neutral-200 border-b-2 lg:border-b-0 lg:border-r-2 theme-border relative overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Brutalist Architecture" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+            <div class="absolute inset-0 bg-lime-400 mix-blend-multiply opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 p-6 theme-bg-card border-t-2 border-r-2 theme-border">
+                <span class="font-mono text-xs">FIGURE_01.JPG</span>
+            </div>
+        </div>
+
+        <!-- Text Side -->
+        <div class="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center theme-bg-page transition-theme">
+            <h2 class="text-4xl md:text-6xl font-semibold tracking-tighter mb-8 leading-[0.9]">
+                STRIP IT <br>
+                DOWN TO <br>
+                THE WIRE.
+            </h2>
+            <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="min-w-[2rem] pt-1 font-mono text-xs text-neutral-400">01</div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Raw Materials</h4>
+                        <p class="text-sm text-neutral-500 leading-relaxed max-w-sm">
+                            Show the underlying structure. Expose the grid lines. Let the content dictate the form.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full h-px bg-neutral-300 dark:bg-neutral-800"></div>
+                <div class="flex items-start gap-4">
+                    <div class="min-w-[2rem] pt-1 font-mono text-xs text-neutral-400">02</div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Visual Hierarchy</h4>
+                        <p class="text-sm text-neutral-500 leading-relaxed max-w-sm">
+                            Use size and weight to guide the eye. Color is a utility, not a decoration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                 <!-- Toggle Switch Custom -->
+                 <label class="inline-flex items-center cursor-pointer group">
+                    <input type="checkbox" id="theme-toggle" class="sr-only peer">
+                    <div class="relative w-14 h-8 bg-neutral-200 border-2 theme-border peer-focus:outline-none transition-colors peer-checked:bg-[var(--text-main)]">
+                        <div class="absolute top-[2px] left-[2px] bg-[var(--bg-card)] border-2 theme-border h-[24px] w-[24px] transition-all peer-checked:translate-x-full peer-checked:border-[var(--bg-page)] peer-checked:bg-lime-400"></div>
+                    </div>
+                    <span class="ml-3 font-mono text-xs uppercase font-medium">Dark Mode (Beta)</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="theme-bg-card theme-text-main py-16 px-4 md:px-12 transition-theme">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                         <span class="iconify text-3xl" data-icon="lucide:box" data-stroke-width="1.5"></span>
+                         <span class="font-bold text-2xl tracking-tighter">NEO//RAW</span>
+                    </a>
+                    <p class="font-mono text-xs max-w-xs text-neutral-500">
+                        Designed for the bold. Built for the web. <br>
+                        © 2024 Systems Inc. No rights reserved. Copy this.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-mono text-xs uppercase text-neutral-500 mb-6">Directory</h4>
+                    <ul class="space-y-3 font-medium text-sm">
+                        <li><a href="#" class="hover:bg-lime-400 hover:text-black hover:px-2 transition-all duration-200 inline-block -ml-2 p-2">Index</a></li>
+                        <li><a href="#" class="hover:bg-lime-400 hover:text-black hover:px-2 transition-all duration-200 inline-block -ml-2 p-2">Work</a></li>
+                        <li><a href="#" class="hover:bg-lime-400 hover:text-black hover:px-2 transition-all duration-200 inline-block -ml-2 p-2">Studio</a></li>
+                        <li><a href="#" class="hover:bg-lime-400 hover:text-black hover:px-2 transition-all duration-200 inline-block -ml-2 p-2">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-xs uppercase text-neutral-500 mb-6">Social</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 border-2 theme-border flex items-center justify-center hover:bg-[var(--text-main)] hover:text-[var(--bg-page)] transition-colors shadow-hard hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]">
+                            <span class="iconify" data-icon="lucide:twitter" data-stroke-width="1.5"></span>
+                        </a>
+                        <a href="#" class="w-10 h-10 border-2 theme-border flex items-center justify-center hover:bg-[var(--text-main)] hover:text-[var(--bg-page)] transition-colors shadow-hard hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]">
+                            <span class="iconify" data-icon="lucide:github" data-stroke-width="1.5"></span>
+                        </a>
+                        <a href="#" class="w-10 h-10 border-2 theme-border flex items-center justify-center hover:bg-[var(--text-main)] hover:text-[var(--bg-page)] transition-colors shadow-hard hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]">
+                            <span class="iconify" data-icon="lucide:dribbble" data-stroke-width="1.5"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 pt-8 border-t-2 theme-border flex flex-col md:flex-row justify-between items-center gap-4">
+                <h1 class="text-[12vw] md:text-[10vw] leading-none font-bold text-neutral-200 dark:text-neutral-800 select-none tracking-tighter transition-colors">
+                    BRUTAFUL
+                </h1>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="font-mono text-xs">All Systems Operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemTheme)) {
+            body.classList.add('dark-mode');
+            toggle.checked = true;
+        }
+
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+</body></html>

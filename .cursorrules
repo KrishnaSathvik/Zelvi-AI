@@ -1,0 +1,160 @@
+# 🚦 Cursor 2025 – Global Safety & Token Rules
+Use these rules for ALL tasks in this project.
+
+## 🧠 Core Principles
+- Minimize token usage.
+- Avoid re-parsing the entire repository.
+- Edit only what is necessary (smallest possible diff).
+- Work ONLY on files I explicitly mention or open.
+- Never auto-expand context without permission.
+
+## 🛑 Hard Restrictions
+- DO NOT scan or read the entire repo.
+- DO NOT rewrite whole files unless I explicitly request it.
+- DO NOT run full-repo refactors, reorganizations, or "apply everywhere" changes.
+- DO NOT generate large diffs without showing a plan first.
+- DO NOT assume related files — wait for my approval.
+
+## ⚙️ Required Workflow for Large Tasks
+Before making changes, respond with:
+1. List of EXACT file paths you want to modify  
+2. Description of proposed changes for each file  
+3. Estimated diff size (small/medium/large)  
+4. Estimated token usage  
+5. A lighter alternative option if possible
+
+Do not proceed until I say **"Approved"**.
+
+## ✂️ Editing Rules
+- Prefer minimal patches over full rewrites.
+- Only update the smallest relevant code block.
+- Avoid formatting-only changes.
+- Maintain existing coding conventions unless requested.
+
+## 📌 File Scope
+When referencing files:
+- Only use files I select or open.
+- If context is unclear → ask me.
+
+## 📦 Component/UI Work
+- Generate JSX/TSX **snippets**, NOT full components.
+- When redesigning UI, break into sections:  
+  Header → Hero → Cards → Lists → Footer.
+- Never rebuild a full page in one go unless approved.
+
+## 👨‍🔧 Backend/API Work
+- Modify only specific routes, controllers, or services.
+- Never auto-refactor entire directories.
+- Ask before touching database schemas or migrations.
+
+## 🛠️ Agent Behavior Rules
+- Use "edit mode" for most changes.
+- Use "refactor mode" ONLY with explicit permission.
+- Never chain actions or self-trigger new tasks.
+
+## 🧪 Testing & Verification
+- Provide test snippets ONLY when asked.
+- Prefer showing diff previews over rewriting entire test files.
+
+## ⚡ Performance & Token Efficiency
+- Use the smallest context window possible.
+- Avoid loading unrelated files.
+- Use local reasoning instead of repo-wide pattern matching.
+
+## 📄 Documentation
+- Summaries should be short and token-efficient.
+- Never embed entire file contents in explanations.
+
+## 🆘 If task seems large
+STOP and ask:
+"Do you want a minimal patch or a full rewrite?"
+
+## 🛑 Runaway-Agent Prevention
+
+### Hard Protection Prompts
+- STOP before reading or scanning the entire repo.
+- Work ONLY on files explicitly opened or mentioned.
+- Never expand context automatically.
+
+### Local Scope Lock
+- Operate ONLY inside the file(s) selected.
+- Do not analyze other files or directories.
+
+### Minimal Diff Only
+- Use MINIMAL DIFF MODE.
+- Do NOT rewrite entire files.
+- Modify only the fewest necessary lines.
+
+### No Related Files
+- Do NOT infer or open "related files."
+- Do NOT attempt multi-file reasoning unless approved.
+
+### Agent Behavior Overrides
+- Disable all automated agent behaviors.
+- Do NOT launch refactor, improve, or multi-file agents.
+- Only apply the exact instructions given.
+- Use only ONE agent for each operation.
+
+### Repo-Scanning Prevention
+- Do NOT search the full repository for patterns or similar code.
+- Focus only on the file(s) specified.
+- Avoid ANY repo-wide logic, refactors, or consistency passes.
+- Do not inspect or analyze other folders.
+- Do NOT parse the entire repo or compute dependency graphs.
+
+### Diff Explosion Stoppers
+- Do NOT rewrite full files.
+- Only modify essential lines.
+- If patch exceeds ~20 changed lines → STOP and ask.
+- Do NOT auto-format or rearrange existing code.
+- Do NOT rename variables, extract functions, reorganize code, or optimize unless asked.
+
+### Multi-Step Guardrails
+- Before ANY code changes:
+  1. List files to modify
+  2. Describe change per file
+  3. Estimate diff size
+  4. Estimate token cost
+- Wait for approval before proceeding.
+- Break large tasks into logical chunks.
+- Complete one chunk at a time.
+
+## 🎯 Safe Mode Prompts by Task Type
+
+### UI / Frontend Safe Mode
+- Only update JSX for the specific section mentioned.
+- Do not rewrite entire components.
+- Do not refactor props, state, or hooks.
+- No global styling or theme changes.
+
+### Backend / API Safe Mode
+- Modify only ONE route or function.
+- Do not refactor entire controllers/services.
+- No code movement, renames, or optimization.
+
+### Database / Firestore / Prisma Safe Mode
+- Modify ONLY the exact field/schema/collection mentioned.
+- Do not perform global schema updates.
+- Do not touch migrations unless asked.
+
+### AI / ML / Embeddings Safe Mode
+- Update ONLY the prompt/embedding/logic specified.
+- Do not restructure the pipeline.
+- No auto-agents or multi-step reasoning unless approved.
+
+## 🚨 Emergency STOP Commands
+If patch is too large:
+- STOP immediately.
+- Scale the scope down.
+- Summarize the smallest safe alternative.
+- Do the smallest possible fix.
+
+## 💡 Universal Safe Start Prompt
+Before any serious refactor, rewrite, redesign, or multi-file update:
+- Work ONLY in the files mentioned.
+- Minimal diff edits.
+- No repo scanning.
+- No global refactors.
+- No agent chains.
+- Show plan + estimated diff + token use before coding.
+

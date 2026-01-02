@@ -1,0 +1,201 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // Design System Colors (from Design1.html)
+        obsidian: '#09090b',
+        charcoal: '#18181b',
+        concrete: '#f4f4f5',
+        acid: '#00d9ff',
+        lime: '#00d9ff',
+        danger: '#ff453a',
+        void: '#000000',
+        surface: '#0a0a0a',
+        panel: '#111111',
+        border: '#222222',
+        accent: '#ff3300',
+        success: '#00d4ff',
+        error: '#ff3300',
+        dim: '#444444',
+        muted: '#525252',
+        text: '#e5e5e5',
+        warning: '#ffaa00',
+        // Legacy colors (keeping for compatibility)
+        primary: {
+          DEFAULT: '#00d9ff',
+          light: '#00d9ff',
+          dark: '#00b8d9',
+        },
+        secondary: '#ff3300',
+        neutral: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          500: '#737373',
+          900: '#171717',
+        },
+        dark: {
+          bg: '#000000',
+          surface: '#0a0a0a',
+          panel: '#111111',
+          border: '#222222',
+          text: '#e5e5e5',
+        },
+      },
+      fontFamily: {
+        sans: ['Space Grotesk', 'sans-serif'],
+        serif: ['Newsreader', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        display: ['Space Grotesk', 'sans-serif'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.05em' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.025em' }],
+        'base': ['1rem', { lineHeight: '1.5rem', letterSpacing: '0' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '-0.025em' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.025em' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.05em' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem', letterSpacing: '-0.05em' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.05em' }],
+        '5xl': ['3rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+        '6xl': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+        '7xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+        '8xl': ['6rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+        '9xl': ['8rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+      },
+      boxShadow: {
+        'sm': '0 2px 10px -4px rgba(0,0,0,0.05)',
+        'md': '0 18px 40px -15px rgba(234,88,12,0.85)',
+        'lg': '0 18px 45px -24px rgba(15,23,42,0.35)',
+        'xl': '0 24px 60px -32px rgba(15,23,42,0.35)',
+        'orange': '0 18px 40px -15px rgba(234,88,12,0.85)',
+        'orange-lg': '0 18px 40px -15px rgba(234,88,12,0.85), inset 0 2px 4px rgba(255,247,237,0.9)',
+        // Modern elevation system
+        'elevation-1': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+        'elevation-2': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+        'elevation-3': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+        'elevation-4': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+        'elevation-5': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        // Colored shadows for depth
+        'lime-glow': '0 0 20px rgba(0, 217, 255, 0.3), 0 4px 12px rgba(0, 217, 255, 0.15)',
+        'lime-glow-lg': '0 0 40px rgba(0, 217, 255, 0.4), 0 8px 24px rgba(0, 217, 255, 0.2)',
+        'accent-glow': '0 0 20px rgba(255, 51, 0, 0.3), 0 4px 12px rgba(255, 51, 0, 0.15)',
+        // Soft shadows for cards
+        'card': '0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
+        'card-hover': '0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)',
+        'card-lg': '0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06)',
+      },
+      spacing: {
+        'section-mobile': '24px',
+        'section-desktop': '48px',
+        // Enhanced spacing scale
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
+      },
+      maxWidth: {
+        'container': '1600px',
+      },
+      animation: {
+        'float': 'float 8s ease-in-out infinite',
+        'fade': 'fade 0.3s ease-out',
+        'grow': 'grow 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+        'marquee': 'marquee 30s linear infinite',
+        'spin-slow': 'spin 1s linear infinite',
+        'morph': 'morph 8s ease-in-out infinite',
+        'draw': 'draw 0.4s ease-out forwards',
+        'radar': 'radar 2s ease-in-out infinite',
+        'ring-dash': 'ring-dash 1.5s ease-in-out infinite',
+        'dash-draw': 'dash-draw 2s linear infinite',
+        'upload-arrow': 'upload-arrow 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+        'shake': 'shake 0.5s ease-in-out',
+        'pop': 'pop 0.3s ease-out',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        fade: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        grow: {
+          '0%': { transform: 'scaleY(0)', transformOrigin: 'bottom' },
+          '100%': { transform: 'scaleY(1)', transformOrigin: 'bottom' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        morph: {
+          '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+          '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+        },
+        draw: {
+          'to': { strokeDashoffset: '0' },
+        },
+        radar: {
+          '0%': { transform: 'scale(0.5)', opacity: '1', borderWidth: '2px' },
+          '100%': { transform: 'scale(2.5)', opacity: '0', borderWidth: '0px' },
+        },
+        'ring-dash': {
+          '0%': { strokeDasharray: '1, 200', strokeDashoffset: '0' },
+          '50%': { strokeDasharray: '90, 200', strokeDashoffset: '-35px' },
+          '100%': { strokeDasharray: '90, 200', strokeDashoffset: '-124px' },
+        },
+        'dash-draw': {
+          '0%': { strokeDashoffset: '100' },
+          '50%': { strokeDashoffset: '0' },
+          '100%': { strokeDashoffset: '-100' },
+        },
+        'upload-arrow': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        shake: {
+          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+          '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+          '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+          '40%, 60%': { transform: 'translate3d(4px, 0, 0)' },
+        },
+        pop: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.4)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      transitionTimingFunction: {
+        'out': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'elastic': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
+      backgroundImage: {
+        'pattern-dots': 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'2\' cy=\'2\' r=\'1\' fill=\'%23333\'/%3E%3C/svg%3E")',
+        'pattern-grid': 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M 40 0 L 0 0 0 40\' fill=\'none\' stroke=\'%23222\' stroke-width=\'1\'/%3E%3C/svg%3E")',
+        'pattern-hatch': 'url("data:image/svg+xml,%3Csvg width=\'10\' height=\'10\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M-2,2 l4,-4 M0,10 l10,-10 M8,12 l4,-4\' stroke=\'%23222\' stroke-width=\'1\'/%3E%3C/svg%3E")',
+        'pattern-hex': 'url("data:image/svg+xml,%3Csvg width=\'28\' height=\'48\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M14 0l14 8v16l-14 8L0 24V8z\' fill=\'none\' stroke=\'%23222\' stroke-width=\'1\'/%3E%3C/svg%3E")',
+        'pattern-circuit': 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M10 10h20v20h20v-20h40v80h-60\' fill=\'none\' stroke=\'%23222\' stroke-width=\'1\'/%3E%3Crect x=\'8\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23333\'/%3E%3Crect x=\'88\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23333\'/%3E%3C/svg%3E")',
+        'pattern-tri': 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpolygon points=\'20,0 40,40 0,40\' fill=\'none\' stroke=\'%23222\' stroke-width=\'1\'/%3E%3C/svg%3E")',
+        'pattern-mesh': 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 0L40 40M40 0L0 40\' stroke=\'%23222\' stroke-width=\'0.5\'/%3E%3Ccircle cx=\'20\' cy=\'20\' r=\'2\' fill=\'%23111\' stroke=\'%23333\'/%3E%3C/svg%3E")',
+        // Modern gradients
+        'gradient-lime': 'linear-gradient(135deg, #00d9ff 0%, #00b8d9 100%)',
+        'gradient-lime-soft': 'linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0, 184, 217, 0.05) 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #ff3300 0%, #cc2600 100%)',
+        'gradient-accent-soft': 'linear-gradient(135deg, rgba(255, 51, 0, 0.1) 0%, rgba(204, 38, 0, 0.05) 100%)',
+        'gradient-card': 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+        'gradient-card-dark': 'linear-gradient(135deg, rgba(23, 23, 23, 0.8) 0%, rgba(17, 17, 17, 0.9) 100%)',
+        'gradient-overlay': 'linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%)',
+        'gradient-overlay-light': 'linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%)',
+      },
+    },
+  },
+  plugins: [],
+}
+

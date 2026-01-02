@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ea580c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+    <meta name="description" content="Zelvi AI is your personal OS. Track jobs, recruiters, learning, projects, and content in one place, with a daily dashboard, analytics, goals, calendar, and an AI coach that understands your data." />
+    <link rel="canonical" href="https://zelvi.pp/" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zelvi.pp/" />
+    <meta property="og:title" content="Zelvi AI – Your AI-Powered Operating System for Job Search, Learning & Goals" />
+    <meta property="og:description" content="Zelvi AI is your personal OS. Track jobs, recruiters, learning, projects, and content in one place, with a daily dashboard, analytics, goals, calendar, and an AI coach that understands your data." />
+    <meta property="og:image" content="https://zelvi.pp/og-image.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://zelvi.pp/" />
+    <meta name="twitter:title" content="Zelvi AI – Your AI-Powered Operating System for Job Search, Learning & Goals" />
+    <meta name="twitter:description" content="Zelvi AI is your personal OS. Track jobs, recruiters, learning, projects, and content in one place, with a daily dashboard, analytics, goals, calendar, and an AI coach that understands your data." />
+    <meta name="twitter:image" content="https://zelvi.pp/og-image.png" />
+    <title>Zelvi AI – Your AI-Powered Operating System for Job Search, Learning & Goals</title>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Zelvi AI",
+      "url": "https://zelvi.pp/",
+      "description": "Zelvi AI is your personal OS. Track jobs, recruiters, learning, projects, and content in one place, with a daily dashboard, analytics, goals, calendar, and an AI coach that understands your data.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://zelvi.pp/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Zelvi AI",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Your AI-powered operating system for job search, learning, and goals. Track jobs, recruiters, learning, projects, and content in one place with analytics and an AI coach.",
+      "url": "https://zelvi.pp/",
+      "screenshot": "https://zelvi.pp/og-image.png",
+      "featureList": [
+        "Job application tracking",
+        "Recruiter management",
+        "Learning progress tracking",
+        "Project management",
+        "Content planning",
+        "Goal setting and tracking",
+        "Analytics dashboard",
+        "AI-powered coaching",
+        "Weekly reviews",
+        "Calendar integration"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Zelvi AI",
+      "url": "https://zelvi.pp/",
+      "logo": "https://zelvi.pp/logo.png",
+      "description": "Your AI-powered operating system for job search, learning, and goals.",
+      "sameAs": []
+    }
+    </script>
+  </head>
+  <body class="dark-mode">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.log('Service Worker registration failed:', err)
+          })
+        })
+      }
+    </script>
+  </body>
+</html>
+
